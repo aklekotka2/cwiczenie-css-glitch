@@ -1,0 +1,76 @@
+/*
+  Example taken from
+  https://ihatetomatoes.net/how-to-create-css-glitch-effect/
+*/
+
+body {
+  margin: 0;
+  background-color: #FBA9C6;
+  color: #161F31;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 96px;
+  text-transform: lowercase;
+  letter-spacing: 3px;
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch:hover::before {
+  animation: glitch .3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+        
+.glitch:hover::after {
+  animation: glitch .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
+}
+
+.glitch::before, 
+.glitch::after {
+  display: block;
+  content: 'the awwwesomes';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: .8;
+} 
+
+.glitch::after {
+  color: #0FF;
+  z-index: -2;
+}
+
+.glitch::before {
+  color: #F0F;
+  z-index: -1;
+}
+
+@keyframes glitch {
+  0% {
+      transform: translate(0);
+  }
+  20% {
+      transform: translate(-5px, 5px);
+  }
+  40% {
+      transform: translate(-5px, -5px);
+  }
+  60% {
+      transform: translate(5px, 5px);
+  }
+  80% {
+      transform: translate(5px, -5px);
+  }
+  to {
+      transform: translate(0);
+  }
+}
